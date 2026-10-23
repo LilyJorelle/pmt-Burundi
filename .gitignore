@@ -1,0 +1,14 @@
+# Survey data: sensitive, never uploaded to Git
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Python clutter
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Secrets and local settings
+.env
