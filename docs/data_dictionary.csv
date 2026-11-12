@@ -1,0 +1,113 @@
+﻿code,english_name,type,values
+hh6,Residence Area,category,1 = Rural; 2 = Urban
+prov5,New administrative subdivision,category,1 = BUHUMUZA; 2 = BUJUMBURA; 3 = BURUNGA; 4 = Butanyerera; 5 = Gitega
+hh7,Region,category,1 = North; 2 = South; 3 = Central East; 4 = West; 5 = Mairie Bujumbura
+hh11,Household size,numeric,
+hh12,Number of eligible women (aged 15 to 49) in the household,numeric,
+hh14,Number of children under 5 years in the household,numeric,
+hc1c,Is your household the owner of this dwelling?,category,1 = Owner with land title; 2 = Owner without land title; 3 = Simple rental; 4 = Rent-to-own; 5 = Free housing; 6 = Employer-provided housing; 7 = -
+hh17,Does your household operate an artisanal mine?,category,"1 = Yes, regularly; 2 = yes, irregularly; 3 = No"
+hh18,Does your household operate coffee plantations?,category,"1 = Yes, regularly; 2 = yes, irregularly; 3 = No"
+hh20,Does your household operate tea plantations?,category,"1 = Yes, regularly; 2 = yes, irregularly; 3 = No"
+ws1,What is the main source of drinking water for members of your household?,category,"11 = Tap water inside the dwel; 12 = Tap water in the yard/plo; 13 = Public standpipe; 14 = Public tap; 31 = Protected well; 32 = Unprotected well; 41 = Protected spring; 42 = Unprotected spring; 51 = Rainwater; 61 = Water from tanker truck; 71 = Cart with small tank/barr; 81 = Surface water (river, str"
+ws2,What is the main source of water your household uses for other purposes such as cooking and handwashing?,category,"11 = Tap water inside the dwel; 12 = Tap water in the yard/plo; 13 = Public standpipe; 14 = Public tap; 31 = Protected well; 32 = Unprotected well; 41 = Protected spring; 42 = Unprotected spring; 51 = Rainwater; 61 = Water from tanker truck; 71 = Cart with small tank/barr; 81 = Surface water (river, str"
+ws3,"How long does it take to go there, collect water, and return?",mixed,995 = Water on premises; 998 = Not known
+ws4,Who usually goes to the water source to collect water?,category,1 = Adult woman; 2 = Adult man; 3 = Girl under 15 years; 4 = Boy under 15 years; 8 = Not Known
+ws5,Do you do anything to make the water safer before drinking?,category,1 = Yes; 2 = No; 8 = Not Known
+ws6_1,Do you do anything to make the water safer before drinking? Boil it,numeric,
+ws6_2,Do you do anything to make the water safer before drinking? Add bleach/chlorine,numeric,
+ws6_3,Do you do anything to make the water safer before drinking? Strain through a cloth,numeric,
+ws6_4,"Do you do anything to make the water safer before drinking? Use a filter (ceramic, sand, composite, etc.",numeric,
+ws6_5,Do you do anything to make the water safer before drinking? Solar disinfection,numeric,
+ws6_6,Do you do anything to make the water safer before drinking? Let it settle,numeric,
+ws6_7,Do you do anything to make the water safer before drinking? Other (precise),numeric,
+ws7,What type of toilet facility do household members usually use?,category,11 = Flush connected to sewer; 12 = Flush connected to septic; 21 = Improved ventilated latri; 22 = Open pit latrine; 23 = Pit latrine / open hole; 31 = Composting toilet; 41 = Bucket / chamber pot; 95 = No toilet / bush / field; 96 = Others
+ws7a,Would you say your household’s toilet is,category,1 = Indoor flush toilet; 2 = Outdoor private flush toi; 3 = Outdoor shared flush toil; 4 = Bush / field toilet; 6 = Other(Precise)
+ws8,Do you share your toilet with other households?,category,1 = Yes; 2 = No
+ws9,"In total, how many households use this toilet?",numeric,
+ws10,What is the most common method your household uses to dispose of solid waste?,category,1 = Composting toilet; 2 = Individual trash bin; 3 = Shared / communal trash b; 4 = At the roadside; 5 = In the fields; 6 = In the river; 7 = Other
+ws11,What is the main method your household uses to dispose of wastewater?,category,1 = Soak pit / soakaway; 2 = Drain / gutter; 3 = In the yard / courtyard; 4 = In the street; 5 = In the bush / scrub; 6 = Main sewer / main collect; 7 = Leach pit / soak pit; 8 = Other (Precise)
+hc2a,Number of rooms in the dwelling,numeric,
+hc2b,Number of rooms used for sleeping,numeric,
+hc3,Main material of the floor,category,11 = Earth / soil; 12 = Dung; 13 = Sand; 21 = Wooden planks; 22 = Palm / bamboo; 31 = Parquet / polished wood; 32 = Vinyl / asphalt; 33 = Tiles; 34 = Cement; 35 = Carpet; 36 = Stone (cut or uncut); 37 = Fired / baked bricks
+hc4,Main material of the roof (record observation),category,11 = No roof; 12 = Thatch / palm or banana l; 13 = Grass; 14 = Straw; 21 = Mat / reed mat; 22 = Palm / bamboo; 23 = Wooden planks; 24 = Cardboard / sheet metal; 31 = Metal / sheet; 32 = Wood; 33 = Zinc / fiber cement; 34 = Local tiles
+hc5,Main material of the walls,category,"1 = Stone, bricks, cement blo; 2 = Adobe bricks; 3 = Rammed earth / mud walls; 4 = Vegetation / plant materi; 5 = Sheeting (tents); 96 = Other"
+hc6,What type of fuel does your household mainly use for cooking?,category,1 = Electricity; 2 = Gas; 3 = Kerosene / Petroleum; 4 = Charcoal; 5 = Firewood; 6 = Animal waste / dung; 7 = Plant materials; 8 = Peat; 96 = Other
+hc6a,Main source of lighting,category,1 = Electricity; 2 = Generator; 3 = Kerosene lamp; 4 = Candle; 5 = Wood fire; 6 = Oil lamp / wick lamp; 7 = Solar energy / solar lamp; 8 = Lantern / kerosene lamp; 96 = Other
+hc7,"In this household, do you cook on an open fire/hearth, an open stove, or a closed stove?",category,1 = Open fire; 2 = Open stove / open hearth; 3 = Closed stove / enclosed s; 6 = Other(Precise)
+hc7a,Does the fire/stove have a chimney or a hood?,category,1 = Yes; 2 = No
+hc8,"Is the cooking generally done in the house, in a separate building, or outdoors?",category,1 = Inside the house; 2 = In a separate building; 3 = Outside; 6 = Other
+hc9_1,Hi-fi system,category,0 = Aucun; 97 = 97 and above; 98 = Not Known
+hc9_2,Stove (gas or electric),category,0 = Aucun; 97 = 97 and above; 98 = Not Known
+hc9_3,Air conditioner,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_4,VCR (video cassette recorder),category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_5,Fan,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_6,Rented house,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_7,Radio,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_8,Television,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_9,Mobile phone,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_10,Animal-drawn cart,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_11,Landline telephone,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_12,Refrigerator,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_13,Chairs,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_14,Dining table,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_15,Sofa,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_16,Bicycle,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_17,Motorcycle / moped / scooter,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_18,Car or truck,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_19,Sewing machine,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_20,Washing machine,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_21,Watering can,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_22,Pickaxe,category,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_23,Hoe,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc9_24,Axe,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc11,Does any member of your household own cultivable land?,category,1 = Yes; 2 = No
+hc12,How many ares of agricultural land do household members own?,mixed,997 = 997 ares and above; 998 = Not known
+hc13,"Does your household own livestock, a herd, or farm animals?",category,1 = Yes; 2 = No
+hc14_1,Large livestock (other than cattle),mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_2,Dairy cows or bulls,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_3,Goats,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_4,Sheep,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_5,Chickens,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_6,Rabbits,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_7,Pigs,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc14_8,Guinea pigs,mixed,0 = Aucun; 97 = 97 and above; 98 = Not known
+hc15,What type of dwelling is it?,category,1 = Compound house; 2 = Detached house; 3 = Multi-unit building; 4 = Apartment building
+hc16_1,What types of information media does the household own?: None,numeric,
+hc16_2,What types of information media does the household own?: Radio,numeric,
+hc16_3,What types of information media does the household own?: Television,numeric,
+hc16_4,What types of information media does the household own?: Internet Connection,numeric,
+hc16_6,What types of information media does the household own?: Other...,numeric,
+hc17_1,What types of information media does the household own?: None,numeric,
+hc17_2,What types of information media does the household own?: Landline,numeric,
+hc17_3,What types of information media does the household own?: Mobile phone,numeric,
+hc17_4,What types of information media does the household own?: Internet Connection,numeric,
+hc17_6,What types of information media does the household own?: Other(Precise),numeric,
+hc18_1,What types of information media does the household own?: None,numeric,
+hc18_2,What means of transport does the household own?: Vehicle,numeric,
+hc18_3,What means of transport does the household own?: Motorbike,numeric,
+hc18_4,What means of transport does the household own?: Bicycle,numeric,
+hc18_6,What means of transport does the household own?:Other(precise),numeric,
+tn1,Does your household have mosquito nets for sleeping?,category,1 = Yes; 2 = No
+tn2,How many do you have?,numeric,
+tn2a,Did at least one household member sleep under a mosquito net last night?”,category,1 = Yes; 2 = No
+tn3,"Of the mosquito nets you have, how many are used?",numeric,
+tn3a_1,Where do you find them? Market,numeric,
+tn3a_2,"Where do you find them? Health Center, ANC Service",numeric,
+tn3a_3,"Where do you find them? Health Center, Maternity Service",numeric,
+tn3a_4,"Where do you find them? Health Center, Vaccination Service",numeric,
+tn3a_5,Where do you find them? Mass Distribution Campaign,numeric,
+tn3a_6, Where do you find them? Other(Precise),numeric,
+tn4,"When you obtained the most recent mosquito nets, were they treated?",category,1 = Yes; 2 = Yes and No; 3 = No; 8 = Not known
+tn5,How long have you had the most recent mosquito nets?,mixed,95 = More than 24 months; 98 = Not known / Not sure
+tn6,"Compared to your sleeping space, are the nets: larger, appropriate size, or smaller?",category,1 = Bigger; 2 = Suitable; 3 = Smaller
+tn7_1,"In your opinion, what factors prevent people from using mosquito nets? Not available",numeric,
+tn7_2,"In your opinion, what factors prevent people from using mosquito nets? Very expensive",numeric,
+tn7_3,"In your opinion, what factors prevent people from using mosquito nets? Not suitable for beds",numeric,
+tn7_4,"In your opinion, what factors prevent people from using mosquito nets? Have harmful effects",numeric,
+tn7_5,"In your opinion, what factors prevent people from using mosquito nets? Other (Precise)",numeric,
+hhmstatus,Marital status of head of household,category,1 = Married; 2 = Widower; 3 = Divorced / Cohabitation; 4 = Separated; 5 = Single; 6 = Unmarried partnership / C
+hhage,Age of head of household,numeric,
+helevel,Education level of head of household,category,1 = Sans; 2 = Primary; 3 = Secondary; 4 = Non informal program; 9 = Not known
+hhsex,Sex of head of household,category,1 = Male; 2 = Female; 9 = Not known
+poor,Poor (bottom 40% of m11cons),label,1 = poor; 0 = not poor
