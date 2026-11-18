@@ -21,6 +21,14 @@ CODEBOOK_FILE = RAW_DIR / "household codebook file - Translation.xlsx"
 MISSING_CODE = -999999999
 
 
+
+# The translation gave hc16, hc17 and hc18 the same English question; the French originals ask about
+# information, communication and transport (found while reading the top predictors of notebook 02).
+STEM_FIXES = {"hc16_": "What means of information does the household own",
+              "hc17_": "What means of communication does the household own",
+              "hc18_": "What means of transport does the household own"}
+
+
 def load_data() -> pd.DataFrame:
     """Read the raw household data exactly as stored: 221 columns, numeric codes, nothing changed."""
     # Fail early with a clear message if the file is not in data/raw (the data is restricted).
@@ -76,6 +84,14 @@ def load_codebook() -> tuple[dict, dict]:
 
     # Build value_labels: variable -> {code: meaning}.
     value_labels = {v: dict(zip(g["code"], g["text"])) for v, g in vb.groupby("variable")}
+
+    # Replace the wrong question text for hc16, hc17 and hc18, and keep the answer option after the colon.
+    for var in labels:
+        for prefix, stem in STEM_FIXES.items():
+            text = str(labels[var])
+            if var.startswith(prefix) and ": " in text:
+                labels[var] = f"{stem}: {text.split(': ', 1)[1]}"
+
     return labels, value_labels
 
 
