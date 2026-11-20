@@ -18,6 +18,7 @@ from ingest import ROOT
 DATA_FILE = ROOT / "data" / "processed" / "clean.csv"
 MODEL_FILE = ROOT / "models" / "xgb_model.joblib"
 INFO_FILE = ROOT / "models" / "model_info.json"
+SHORT_LIST_FILE = ROOT / "docs" / "short_predictors.txt"   # the 30 chosen predictors, saved by notebook 02, Step 6, Part 7
 
 # Same settings as notebook 02 (Step 1 split, Step 3 technique), so the results can be compared.
 SEED = 42
@@ -28,18 +29,22 @@ XGB_PARAMS = dict(n_estimators=300, max_depth=4, learning_rate=0.05, subsample=0
 
 
 
-def load_and_split():
-    """Read the clean table and split it by cluster: every cluster stays on one side."""
+def load_and_split(use_short_list=False):
+    """Read the clean table and split it by cluster: every cluster stays on one side.
+
+    By default all 111 predictors are kept (notebook 02 needs them); use_short_list=True keeps only the chosen 30.
+    """
     data = pd.read_csv(DATA_FILE)
     predictors = [c for c in data.columns if c not in (CLUSTER_COLUMN, LABEL)]
+    if use_short_list:
+        predictors = SHORT_LIST_FILE.read_text().split()   # one code per line, in the order saved by the notebook
     X, y, groups = data[predictors], data[LABEL], data[CLUSTER_COLUMN]
     train_idx, test_idx = next(GroupShuffleSplit(n_splits=1, test_size=TEST_SHARE, random_state=SEED).split(X, y, groups))
     return predictors, X.iloc[train_idx], X.iloc[test_idx], y.iloc[train_idx], y.iloc[test_idx]
 
-
 def run():
     """Train XGBoost on the training set, score it once on the test set, and save the model and its info."""
-    predictors, X_train, X_test, y_train, y_test = load_and_split()
+    predictors, X_train, X_test, y_train, y_test = load_and_split(use_short_list=True)
     model = XGBClassifier(**XGB_PARAMS).fit(X_train, y_train)
 
     # One honest check on households the model has never seen (poor if the predicted risk is 0.5 or more).
@@ -53,10 +58,14 @@ def run():
     # Save the model, and an info file with the predictors in order (the API must send them in this order).
     MODEL_FILE.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(model, MODEL_FILE)
+    # Smallest and largest value of each predictor in the clean table: the API refuses answers outside this range.
+    both = pd.concat([X_train, X_test])
+    ranges = {c: [float(both[c].min()), float(both[c].max())] for c in predictors}
     info = {"technique": "XGBoost", "label": "poor = bottom 40% of the item count m11cons, among filled interviews",
             "seed": SEED, "test_share": TEST_SHARE, "train_households": len(X_train), "test_households": len(X_test),
-            "params": XGB_PARAMS, "test_metrics": metrics, "predictors": predictors}
+            "params": XGB_PARAMS, "test_metrics": metrics, "predictors": predictors, "ranges": ranges}
     INFO_FILE.write_text(json.dumps(info, indent=2), encoding="utf-8")
+    
 
     # Summary only: counts and scores, no household rows.
     print(f"Train: {len(X_train)} households | Test: {len(X_test)} households | Predictors: {len(predictors)}")

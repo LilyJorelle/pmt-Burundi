@@ -1,0 +1,31 @@
+code,topic,question_group,question,importance
+hc17_1,"Communication, information, transport",hc17,What means of communication does the household own: None,0.0735
+hc9_9,Household goods,hc9,Mobile phone,0.0593
+hc13,"Livestock, land and farm work",hc13,"Does your household own livestock, a herd, or farm animals?",0.0187
+hc6,Dwelling and energy,hc6,What type of fuel does your household mainly use for cooking?,0.0168
+helevel,Household head and size,helevel,Education level of head of household,0.0167
+hh6,Location,hh6,Residence Area,0.0144
+ws7,Water and sanitation,ws7,What type of toilet facility do household members usually use?,0.0107
+tn6,Mosquito nets,tn6,"Compared to your sleeping space, are the nets: larger, appropriate size, or smaller?",0.0097
+hc9_14,Household goods,hc9,Dining table,0.0579
+hc16_1,"Communication, information, transport",hc16,What means of information does the household own: None,0.0191
+hc14_8,"Livestock, land and farm work",hc14,Guinea pigs,0.0141
+hc6a,Dwelling and energy,hc6,Main source of lighting,0.0139
+prov5,Location,prov5,New administrative subdivision,0.0128
+ws5,Water and sanitation,ws5,Do you do anything to make the water safer before drinking?,0.0105
+tn4,Mosquito nets,tn4,"When you obtained the most recent mosquito nets, were they treated?",0.009
+hhage,Household head and size,hhage,Age of head of household,0.0069
+hc9_24,Household goods,hc9,Axe,0.0198
+hc18_1,"Communication, information, transport",hc18,What means of transport does the household own: None,0.015
+hh18,"Livestock, land and farm work",hh18,Does your household operate coffee plantations?,0.0117
+hc7,Dwelling and energy,hc7,"In this household, do you cook on an open fire/hearth, an open stove, or a closed stove?",0.0112
+hh7,Location,hh7,Region,0.0104
+ws9,Water and sanitation,ws9,"In total, how many households use this toilet?",0.0094
+tn5,Mosquito nets,tn5,How long have you had the most recent mosquito nets?,0.0084
+hh12,Household head and size,hh12,Number of eligible women (aged 15 to 49) in the household,0.0066
+hc9_15,Household goods,hc9,Sofa,0.0121
+hc18_6,"Communication, information, transport",hc18,What means of transport does the household own?:Other(precise),0.0115
+hc1c,Dwelling and energy,hc1,Is your household the owner of this dwelling?,0.0107
+ws7a,Water and sanitation,ws7,Would you say your household’s toilet is,0.0093
+hc12,"Livestock, land and farm work",hc12,How many ares of agricultural land do household members own?,0.009
+hhmstatus,Household head and size,hhmstatus,Marital status of head of household,0.0064

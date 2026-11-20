@@ -1,0 +1,678 @@
+[
+  {
+    "code": "hh6",
+    "topic": "Location",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 2.0,
+    "label": "Residence Area",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Rural"
+      },
+      {
+        "value": 2,
+        "label": "Urban"
+      }
+    ]
+  },
+  {
+    "code": "prov5",
+    "topic": "Location",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 5.0,
+    "label": "New administrative subdivision",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "BUHUMUZA"
+      },
+      {
+        "value": 2,
+        "label": "BUJUMBURA"
+      },
+      {
+        "value": 3,
+        "label": "BURUNGA"
+      },
+      {
+        "value": 4,
+        "label": "Butanyerera"
+      },
+      {
+        "value": 5,
+        "label": "Gitega"
+      }
+    ]
+  },
+  {
+    "code": "hh7",
+    "topic": "Location",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 5.0,
+    "label": "Region",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "North"
+      },
+      {
+        "value": 2,
+        "label": "South"
+      },
+      {
+        "value": 3,
+        "label": "Central East"
+      },
+      {
+        "value": 4,
+        "label": "West"
+      },
+      {
+        "value": 5,
+        "label": "Mairie Bujumbura"
+      }
+    ]
+  },
+  {
+    "code": "helevel",
+    "topic": "Household head and size",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 9.0,
+    "label": "Education level of head of household",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Sans"
+      },
+      {
+        "value": 2,
+        "label": "Primary"
+      },
+      {
+        "value": 3,
+        "label": "Secondary"
+      },
+      {
+        "value": 4,
+        "label": "Non informal program"
+      },
+      {
+        "value": 9,
+        "label": "Not known"
+      }
+    ]
+  },
+  {
+    "code": "hhage",
+    "topic": "Household head and size",
+    "kind": "number",
+    "min": 17.0,
+    "max": 102.0,
+    "label": "Age of head of household",
+    "hint": "Age in years",
+    "options": []
+  },
+  {
+    "code": "hh12",
+    "topic": "Household head and size",
+    "kind": "number",
+    "min": 0.0,
+    "max": 7.0,
+    "label": "Number of eligible women (aged 15 to 49) in the household",
+    "hint": "Women aged 15 to 49 in the household",
+    "options": []
+  },
+  {
+    "code": "hhmstatus",
+    "topic": "Household head and size",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 6.0,
+    "label": "Marital status of head of household",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Married"
+      },
+      {
+        "value": 2,
+        "label": "Widower"
+      },
+      {
+        "value": 3,
+        "label": "Divorced / Cohabitation"
+      },
+      {
+        "value": 4,
+        "label": "Separated"
+      },
+      {
+        "value": 5,
+        "label": "Single"
+      },
+      {
+        "value": 6,
+        "label": "Unmarried partnership / C"
+      }
+    ]
+  },
+  {
+    "code": "hc6",
+    "topic": "Dwelling and energy",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 96.0,
+    "label": "What type of fuel does your household mainly use for cooking?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Electricity"
+      },
+      {
+        "value": 2,
+        "label": "Gas"
+      },
+      {
+        "value": 3,
+        "label": "Kerosene / Petroleum"
+      },
+      {
+        "value": 4,
+        "label": "Charcoal"
+      },
+      {
+        "value": 5,
+        "label": "Firewood"
+      },
+      {
+        "value": 6,
+        "label": "Animal waste / dung"
+      },
+      {
+        "value": 7,
+        "label": "Plant materials"
+      },
+      {
+        "value": 8,
+        "label": "Peat"
+      },
+      {
+        "value": 96,
+        "label": "Other"
+      }
+    ]
+  },
+  {
+    "code": "hc6a",
+    "topic": "Dwelling and energy",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 96.0,
+    "label": "Main source of lighting",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Electricity"
+      },
+      {
+        "value": 2,
+        "label": "Generator"
+      },
+      {
+        "value": 3,
+        "label": "Kerosene lamp"
+      },
+      {
+        "value": 4,
+        "label": "Candle"
+      },
+      {
+        "value": 5,
+        "label": "Wood fire"
+      },
+      {
+        "value": 6,
+        "label": "Oil lamp / wick lamp"
+      },
+      {
+        "value": 7,
+        "label": "Solar energy / solar lamp"
+      },
+      {
+        "value": 8,
+        "label": "Lantern / kerosene lamp"
+      },
+      {
+        "value": 96,
+        "label": "Other"
+      }
+    ]
+  },
+  {
+    "code": "hc7",
+    "topic": "Dwelling and energy",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 6.0,
+    "label": "In this household, do you cook on an open fire/hearth, an open stove, or a closed stove?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Open fire"
+      },
+      {
+        "value": 2,
+        "label": "Open stove / open hearth"
+      },
+      {
+        "value": 3,
+        "label": "Closed stove / enclosed s"
+      },
+      {
+        "value": 6,
+        "label": "Other(Precise)"
+      }
+    ]
+  },
+  {
+    "code": "hc1c",
+    "topic": "Dwelling and energy",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 7.0,
+    "label": "Is your household the owner of this dwelling?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Owner with land title"
+      },
+      {
+        "value": 2,
+        "label": "Owner without land title"
+      },
+      {
+        "value": 3,
+        "label": "Simple rental"
+      },
+      {
+        "value": 4,
+        "label": "Rent-to-own"
+      },
+      {
+        "value": 5,
+        "label": "Free housing"
+      },
+      {
+        "value": 6,
+        "label": "Employer-provided housing"
+      },
+      {
+        "value": 7,
+        "label": "-"
+      }
+    ]
+  },
+  {
+    "code": "ws7",
+    "topic": "Water and sanitation",
+    "kind": "choice",
+    "min": 11.0,
+    "max": 96.0,
+    "label": "What type of toilet facility do household members usually use?",
+    "hint": "",
+    "options": [
+      {
+        "value": 11,
+        "label": "Flush connected to sewer"
+      },
+      {
+        "value": 12,
+        "label": "Flush connected to septic"
+      },
+      {
+        "value": 21,
+        "label": "Improved ventilated latri"
+      },
+      {
+        "value": 22,
+        "label": "Open pit latrine"
+      },
+      {
+        "value": 23,
+        "label": "Pit latrine / open hole"
+      },
+      {
+        "value": 31,
+        "label": "Composting toilet"
+      },
+      {
+        "value": 41,
+        "label": "Bucket / chamber pot"
+      },
+      {
+        "value": 95,
+        "label": "No toilet / bush / field"
+      },
+      {
+        "value": 96,
+        "label": "Others"
+      }
+    ]
+  },
+  {
+    "code": "ws5",
+    "topic": "Water and sanitation",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 8.0,
+    "label": "Do you do anything to make the water safer before drinking?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 2,
+        "label": "No"
+      },
+      {
+        "value": 8,
+        "label": "Not Known"
+      }
+    ]
+  },
+  {
+    "code": "ws9",
+    "topic": "Water and sanitation",
+    "kind": "number",
+    "min": 0.0,
+    "max": 25.0,
+    "label": "In total, how many households use this toilet?",
+    "hint": "Number of households using this toilet",
+    "options": []
+  },
+  {
+    "code": "ws7a",
+    "topic": "Water and sanitation",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 6.0,
+    "label": "Would you say your household’s toilet is",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Indoor flush toilet"
+      },
+      {
+        "value": 2,
+        "label": "Outdoor private flush toi"
+      },
+      {
+        "value": 3,
+        "label": "Outdoor shared flush toil"
+      },
+      {
+        "value": 4,
+        "label": "Bush / field toilet"
+      },
+      {
+        "value": 6,
+        "label": "Other(Precise)"
+      }
+    ]
+  },
+  {
+    "code": "hc9_9",
+    "topic": "Household goods",
+    "kind": "number",
+    "min": 0.0,
+    "max": 97.0,
+    "label": "Mobile phone",
+    "hint": "",
+    "options": []
+  },
+  {
+    "code": "hc9_14",
+    "topic": "Household goods",
+    "kind": "number",
+    "min": 0.0,
+    "max": 97.0,
+    "label": "Dining table",
+    "hint": "",
+    "options": []
+  },
+  {
+    "code": "hc9_24",
+    "topic": "Household goods",
+    "kind": "number",
+    "min": 0.0,
+    "max": 97.0,
+    "label": "Axe",
+    "hint": "",
+    "options": []
+  },
+  {
+    "code": "hc9_15",
+    "topic": "Household goods",
+    "kind": "number",
+    "min": 0.0,
+    "max": 98.0,
+    "label": "Sofa",
+    "hint": "",
+    "options": []
+  },
+  {
+    "code": "hc13",
+    "topic": "Livestock, land and farm work",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 2.0,
+    "label": "Does your household own livestock, a herd, or farm animals?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 2,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "hc14_8",
+    "topic": "Livestock, land and farm work",
+    "kind": "number",
+    "min": 0.0,
+    "max": 97.0,
+    "label": "Guinea pigs",
+    "hint": "",
+    "options": []
+  },
+  {
+    "code": "hh18",
+    "topic": "Livestock, land and farm work",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 3.0,
+    "label": "Does your household operate coffee plantations?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes, regularly"
+      },
+      {
+        "value": 2,
+        "label": "yes, irregularly"
+      },
+      {
+        "value": 3,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "hc12",
+    "topic": "Livestock, land and farm work",
+    "kind": "number",
+    "min": 0.0,
+    "max": 997.0,
+    "label": "How many ares of agricultural land do household members own?",
+    "hint": "Ares of agricultural land (0 if none)",
+    "options": []
+  },
+  {
+    "code": "hc17_1",
+    "topic": "Communication, information, transport",
+    "kind": "yesno",
+    "min": 0.0,
+    "max": 1.0,
+    "label": "The household owns NO means of communication",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 0,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "hc16_1",
+    "topic": "Communication, information, transport",
+    "kind": "yesno",
+    "min": 0.0,
+    "max": 1.0,
+    "label": "The household owns NO means of information",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 0,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "hc18_1",
+    "topic": "Communication, information, transport",
+    "kind": "yesno",
+    "min": 0.0,
+    "max": 1.0,
+    "label": "The household owns NO means of transport",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 0,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "hc18_6",
+    "topic": "Communication, information, transport",
+    "kind": "yesno",
+    "min": 0.0,
+    "max": 1.0,
+    "label": "The household owns another means of transport (other)",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 0,
+        "label": "No"
+      }
+    ]
+  },
+  {
+    "code": "tn6",
+    "topic": "Mosquito nets",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 3.0,
+    "label": "Compared to your sleeping space, are the nets: larger, appropriate size, or smaller?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Bigger"
+      },
+      {
+        "value": 2,
+        "label": "Suitable"
+      },
+      {
+        "value": 3,
+        "label": "Smaller"
+      }
+    ]
+  },
+  {
+    "code": "tn4",
+    "topic": "Mosquito nets",
+    "kind": "choice",
+    "min": 1.0,
+    "max": 8.0,
+    "label": "When you obtained the most recent mosquito nets, were they treated?",
+    "hint": "",
+    "options": [
+      {
+        "value": 1,
+        "label": "Yes"
+      },
+      {
+        "value": 2,
+        "label": "Yes and No"
+      },
+      {
+        "value": 3,
+        "label": "No"
+      },
+      {
+        "value": 8,
+        "label": "Not known"
+      }
+    ]
+  },
+  {
+    "code": "tn5",
+    "topic": "Mosquito nets",
+    "kind": "number",
+    "min": 0.0,
+    "max": 73.0,
+    "label": "How long have you had the most recent mosquito nets?",
+    "hint": "In months; enter 25 if more than 24 months",
+    "options": []
+  }
+]

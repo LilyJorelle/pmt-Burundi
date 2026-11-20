@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pmt-Burundi: household poverty screening</title>
+<style>
+  :root { --ink:#1f2933; --muted:#616e7c; --line:#d9dee3; --bg:#f5f7f9; --card:#fff; --accent:#1f6feb;
+          --poor:#b42318; --poorbg:#fdecea; --ok:#1a7f4b; --okbg:#e8f5ee; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  header { padding:16px 28px; background:var(--card); border-bottom:1px solid var(--line); text-align:center; }
+  header h1 { margin:0 0 4px; font-size:22px; }
+  header p { margin:0; color:var(--muted); font-size:14px; }
+  .layout { display:grid; grid-template-columns: 1fr 360px; gap:24px; padding:16px 28px; max-width:1100px; margin:0 auto; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  details.sec { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:0 16px; margin-bottom:8px; }
+  details.sec summary { cursor:pointer; font-size:15px; font-weight:700; padding:10px 0; }
+  details.sec summary .count { font-weight:400; color:var(--muted); font-size:13px; margin-left:8px; }
+  details.sec .grid { padding:4px 0 16px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:14px 18px; }
+  label { display:block; font-size:13px; font-weight:600; margin-bottom:4px; }
+  .hint { font-size:12px; color:var(--muted); margin-top:3px; }
+  select, input { width:100%; padding:8px 10px; font-size:14px; border:1px solid var(--line); border-radius:6px; background:#fff; }
+  aside { position:sticky; top:16px; align-self:start; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  button { font:inherit; cursor:pointer; border-radius:8px; border:1px solid var(--line); background:#fff; padding:9px 12px; }
+  button.primary { width:100%; background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; font-size:16px; padding:12px; margin-top:12px; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .row button { flex:1; }
+  #result { margin-top:16px; }
+  .verdict { border-radius:10px; padding:14px; text-align:center; }
+  .verdict .big { font-size:34px; font-weight:800; letter-spacing:1px; }
+  .verdict.poor { background:var(--poorbg); color:var(--poor); }
+  .verdict.notpoor { background:var(--okbg); color:var(--ok); }
+  .small { font-size:12px; color:var(--muted); margin-top:6px; }
+  .error { background:var(--poorbg); color:var(--poor); border-radius:8px; padding:10px 12px; font-size:13px; }
+  .why { margin-top:14px; }
+  .why h3 { margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+  .why-row { margin-bottom:8px; font-size:13px; }
+  .pushbar { height:6px; background:#e4e7eb; border-radius:3px; margin-top:3px; }
+  .pushfill { height:100%; border-radius:3px; }
+  .pushfill.poor { background:var(--poor); }
+  .pushfill.ok { background:var(--ok); }
+</style>
+</head>
+<body>
+<header>
+  <h1>pmt-Burundi: household poverty screening</h1>
+  <p>Answer what you know about the household and leave the rest empty. A screening aid, not a final decision.</p>
+</header>
+
+<div class="layout">
+  <main id="sections"></main>
+  <aside>
+    <div class="panel">
+      <div class="small">Example households:</div>
+      <div class="row" id="examples"></div>
+      <div class="row"><button id="clear">Clear all answers</button></div>
+      <button class="primary" id="predict">Predict</button>
+      <div id="result"></div>
+    </div>
+  </aside>
+</div>
+
+<script>
+// The page is built from /form-data: the questions come from the data dictionary, nothing is typed by hand.
+const fieldsByCode = {};
+
+// Small helper: create an element, set its properties, and put plain text in it (safe, no HTML injection).
+function el(tag, props = {}, text = "") {
+  const node = document.createElement(tag);
+  Object.assign(node, props);
+  if (text) node.textContent = text;
+  return node;
+}
+
+// One input per question: a number box for counts, a dropdown for coded questions and yes/no ticks.
+// For the mosquito-net questions an empty answer means "not applicable" (the household has no nets).
+function makeControl(f) {
+  const nets = f.topic === "Mosquito nets";
+  let control;
+  if (f.kind === "number") {
+    control = el("input", { type: "number", step: "any",
+                            placeholder: nets ? "leave empty if no nets" : `${f.min} to ${f.max}` });
+  } else {
+    control = el("select");
+    control.appendChild(el("option", { value: "" }, nets ? "(not applicable: no nets)" : "(not answered)"));
+    for (const o of f.options) control.appendChild(el("option", { value: String(o.value) }, o.label));
+  }
+  control.id = "f_" + f.code;
+  return control;
+}
+
+// Draw the sections as collapsible cards: the fields arrive sorted by topic, so a new topic starts a new card.
+function render(fields) {
+  const container = document.getElementById("sections");
+  const counts = {};
+  for (const f of fields) counts[f.topic] = (counts[f.topic] || 0) + 1;
+  let current = null, grid = null;
+  for (const f of fields) {
+    fieldsByCode[f.code] = f;
+    if (f.topic !== current) {
+      current = f.topic;
+      const sec = el("details", { className: "sec" });
+      const title = el("summary", {}, current);
+      title.appendChild(el("span", { className: "count" }, `${counts[current]} questions`));
+      sec.appendChild(title);
+      grid = el("div", { className: "grid" });
+      sec.appendChild(grid);
+      container.appendChild(sec);
+    }
+    const box = el("div");
+    box.appendChild(el("label", { htmlFor: "f_" + f.code }, f.label));
+    box.appendChild(makeControl(f));
+    if (f.hint) box.appendChild(el("div", { className: "hint" }, f.hint));
+    grid.appendChild(box);
+  }
+}
+
+// Read the form: only the questions that were answered are sent (empty = not answered).
+function collect() {
+  const answers = {};
+  for (const code in fieldsByCode) {
+    const v = document.getElementById("f_" + code).value;
+    if (v !== "") answers[code] = Number(v);
+  }
+  return answers;
+}
+
+// Put a set of answers into the form (used by the example buttons and by Clear).
+function fill(answers) {
+  for (const code in fieldsByCode) {
+    document.getElementById("f_" + code).value = code in answers ? String(answers[code]) : "";
+  }
+}
+
+// One block of the explanation: a title and up to 3 answers, each with a bar showing how strongly it pushed.
+function why(title, items, tone, scale) {
+  const block = el("div", { className: "why" });
+  block.appendChild(el("h3", {}, title));
+  if (items.length === 0) block.appendChild(el("div", { className: "small" }, "None of the answers pushed this way."));
+  for (const i of items) {
+    const row = el("div", { className: "why-row" });
+    row.appendChild(el("div", {}, `${i.question}: ${i.answer}`));
+    const bar = el("div", { className: "pushbar" });
+    const fillBar = el("div", { className: "pushfill " + tone });
+    fillBar.style.width = (Math.abs(i.push) / scale * 100) + "%";
+    bar.appendChild(fillBar);
+    row.appendChild(bar);
+    block.appendChild(row);
+  }
+  return block;
+}
+
+// Send the answers to POST /predict, then show the verdict first and the reasons under it.
+async function predict() {
+  const box = document.getElementById("result");
+  box.replaceChildren();
+  let response, data;
+  try {
+    response = await fetch("/predict", { method: "POST", headers: { "Content-Type": "application/json" },
+                                         body: JSON.stringify({ answers: collect() }) });
+    data = await response.json();
+  } catch (e) {
+    box.appendChild(el("div", { className: "error" }, "Could not reach the API. Is the server running?"));
+    return;
+  }
+  if (!response.ok) {
+    const detail = Array.isArray(data.detail)
+      ? data.detail.map(d => (typeof d === "string" ? d : d.msg)).join(" | ") : String(data.detail);
+    box.appendChild(el("div", { className: "error" }, "Answer refused: " + detail));
+    return;
+  }
+
+  // 1. The verdict, big, with the score in one short line.
+  const poor = data.label === "poor";
+  const verdict = el("div", { className: "verdict " + (poor ? "poor" : "notpoor") });
+  verdict.appendChild(el("div", { className: "big" }, poor ? "POOR" : "NOT POOR"));
+  verdict.appendChild(el("div", {}, `Risk score ${Math.round(data.risk * 100)}% (poor from 50%)`));
+  box.appendChild(verdict);
+
+  // 2. Why: the answers that pushed the score most in each direction, drawn on the same scale.
+  const all = [...data.why.towards_poor, ...data.why.towards_not_poor];
+  const scale = Math.max(...all.map(i => Math.abs(i.push)), 0.0001);
+  box.appendChild(why("Pushing towards POOR", data.why.towards_poor, "poor", scale));
+  box.appendChild(why("Pushing towards NOT POOR", data.why.towards_not_poor, "ok", scale));
+
+  // 3. Small print.
+  box.appendChild(el("div", { className: "small" },
+    `${data.answers_given} of ${data.answers_given + data.answers_missing} questions answered. Screening aid, not a final decision.`));
+}
+
+// Start: load the questions and the example households, then wire up the buttons.
+async function init() {
+  document.getElementById("clear").onclick = () => { fill({}); document.getElementById("result").replaceChildren(); };
+  document.getElementById("predict").onclick = predict;
+  try {
+    const data = await (await fetch("/form-data")).json();
+    render(data.fields);
+
+    // A button to open or close all the sections at once.
+    const toggle = el("button", {}, "Show all questions");
+    toggle.style.marginBottom = "12px";
+    toggle.onclick = () => {
+      const open = toggle.textContent.startsWith("Show");
+      document.querySelectorAll("details.sec").forEach(d => { d.open = open; });
+      toggle.textContent = open ? "Hide all questions" : "Show all questions";
+    };
+    document.getElementById("sections").prepend(toggle);
+
+    // One button per example household: fill the form, then predict at once.
+    const row = document.getElementById("examples");
+    for (const key in data.examples) {
+      const b = el("button", {}, data.examples[key].label);
+      b.onclick = () => { fill(data.examples[key].answers); predict(); };
+      row.appendChild(b);
+    }
+  } catch (e) {
+    document.getElementById("result").appendChild(el("div", { className: "error" }, "Could not load the form: " + e));
+  }
+}
+init();
+</script>
+</body>
+</html>
