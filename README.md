@@ -106,5 +106,5 @@ python src/make_form.py
 - **The label is a relative proxy.** `m11cons` (number of items consumed) is the consumption summary provided in the data. The codebook does not list which items are counted or the reference period, and the count is per household, not per person. Poor means "12 items or fewer in this data", not an official poverty line. The poverty rate is highest in the smallest households (48.3% for 1 to 3 members versus 40.4% for 8 or more), partly because of this.
 - **Location matters.** In the training data 46.1% of rural households are poor versus 19.4% of urban households, and the model uses location as one of its signals. Poor households in urban areas are likely harder to detect: the typical urban poor profile scores below the 50% cut.
 - **The risk score is not a calibrated probability.** A household is called poor when the score is 50% or more. This is a decision rule of the model, not a poverty line.
-- **No consistency check between answers** in the demo form.
+- **Answers are validated one by one, not against each other.** The service refuses impossible values, but it does not detect contradictions between two valid answers.
 - Neural networks were not tested.
